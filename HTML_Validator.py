@@ -15,7 +15,10 @@ def validate_html(html):
     stack = []
     tags = _extract_tags(html)
     if len(tags) == 0:
-        return False
+        if "<" in html:
+            return False
+        else:
+            return True
     for tag in tags:
         if "/" not in tag:
             stack.append(tag)
